@@ -1,0 +1,17 @@
+{
+  "name": "villadegd-logo-sting",
+  "version": "1.0.0",
+  "private": true,
+  "description": "VILLA DE GD — 2s 16:9 3D logo sting: a metal-rimmed coin badge spins to rest and a light sweeps the struck face.",
+  "type": "module",
+  "scripts": {
+    "start": "node tools/serve.mjs",
+    "render": "node tools/render.mjs",
+    "render:draft": "node tools/render.mjs --size=1280x720 --samples=4 --formats=mp4",
+    "probe": "node tools/render.mjs --probe=0,0.08,0.4,1.18,1.5,1.99 --keep"
+  },
+  "devDependencies": {
+    "ffmpeg-static": "^5.2.0",
+    "playwright": "1.56.1"
+  }
+}

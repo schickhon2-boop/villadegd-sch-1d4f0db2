@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>VILLA DE GD Sting</title>
+<style>
+  /* Grey machine shop: graphite ground, nickel type, one 16:9 window. */
+  :root {
+    --ink: #e7eaee;
+    --ink-dim: #878d96;
+    --ink-faint: #4e545c;
+    --ground: #0b0c0e;
+    --panel: #15171a;
+    --line: #262a2f;
+    --nickel: #c4c8ce;
+    color-scheme: dark;
+  }
+  * { box-sizing: border-box; }
+  html, body { height: 100%; }
+  body {
+    margin: 0;
+    background: var(--ground);
+    color: var(--ink);
+    font: 400 14px/1.5 "Helvetica Neue", Arial, system-ui, sans-serif;
+    display: flex;
+    flex-direction: column;
+    gap: clamp(14px, 3vh, 30px);
+    justify-content: center;
+    padding: clamp(16px, 4vh, 44px) 16px;
+  }
+  @font-face {
+    font-family: 'Cinzel';
+    src: url('assets/fonts/cinzel-latin.woff2') format('woff2');
+    font-weight: 400 900;
+    font-display: swap;
+  }
+
+  header, footer { width: min(100%, 1180px); margin-inline: auto; }
+  header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .mark {
+    font-family: 'Cinzel', "Liberation Serif", Georgia, serif;
+    font-weight: 700;
+    font-size: clamp(15px, 2.4vw, 20px);
+    letter-spacing: 0.3em;
+    color: var(--nickel);
+    margin: 0;
+  }
+  .spec {
+    display: flex;
+    gap: 18px;
+    flex-wrap: wrap;
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .stage {
+    position: relative;
+    width: min(100%, 1180px);
+    aspect-ratio: 16 / 9;
+    max-width: 100%;
+    margin-inline: auto;
+    background: #000;
+    border: 1px solid var(--line);
+    overflow: hidden;
+    cursor: pointer;
+  }
+  canvas { display: block; width: 100%; height: 100%; }
+
+  .loading {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    transition: opacity .4s ease;
+  }
+  body.is-ready .loading { opacity: 0; pointer-events: none; }
+
+  .track {
+    position: absolute;
+    left: 0; right: 0; bottom: 0;
+    height: 2px;
+    background: #1b1d21;
+  }
+  .track span {
+    display: block;
+    height: 100%;
+    background: var(--nickel);
+    transform: scaleX(0);
+    transform-origin: left;
+  }
+
+  footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  button {
+    font: inherit;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink);
+    background: var(--panel);
+    border: 1px solid var(--line);
+    padding: 11px 22px;
+    cursor: pointer;
+    transition: border-color .2s ease, background .2s ease;
+  }
+  button:hover { border-color: #3c424a; background: #1b1e22; }
+  button:focus-visible { outline: 2px solid var(--nickel); outline-offset: 2px; }
+  .hint { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-faint); }
+  @media (prefers-reduced-motion: reduce) { .track span { transition: none; } }
+</style>
+</head>
+<body>
+  <header>
+    <h1 class="mark">VILLA DE GD</h1>
+    <div class="spec">
+      <span>Logo sting</span>
+      <span>2.00s</span>
+      <span>16:9</span>
+      <span>60 fps</span>
+    </div>
+  </header>
+
+  <div class="stage">
+    <canvas id="view"></canvas>
+    <div class="loading">Striking the die…</div>
+    <div class="track"><span id="bar"></span></div>
+  </div>
+
+  <footer>
+    <button id="replay" type="button">Replay</button>
+    <p class="hint">Click the frame or press space to replay</p>
+  </footer>
+
+  <script type="importmap">
+    { "imports": { "three": "./vendor/three.module.js" } }
+  </script>
+  <script type="module" src="./src/sting.js"></script>
+</body>
+</html>
