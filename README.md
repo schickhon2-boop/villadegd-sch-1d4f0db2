@@ -11,6 +11,11 @@
 | 색·분위기 | 회색 (그래파이트 배경 + 니켈 메탈) |
 | 3D | Three.js r186, WebGL2 |
 
+![VILLA DE GD 로고 스팅 마지막 프레임](out/villadegd-sting-poster.jpg)
+
+렌더된 영상은 `out/villadegd-sting-1080p.mp4`, 움직이는 미리보기는
+`out/villadegd-sting-preview.gif` 입니다.
+
 ## 바로 보기
 
 ```bash
@@ -37,7 +42,10 @@ npm run probe            # 주요 순간만 스틸로
 | `villadegd-sting-prores422hq.mov` | ProRes 422 HQ — 편집 툴에 올려 추가 편집할 때 |
 | `villadegd-sting-1080p.webm` | VP9 — 웹페이지 임베드 |
 | `villadegd-sting-preview.gif` | 960px 미리보기 |
-| `villadegd-sting-poster.png` | 마지막 프레임 스틸 |
+| `villadegd-sting-poster.png` / `.jpg` | 마지막 프레임 스틸 |
+
+ProRes(`.mov`)는 115MB라 저장소에 올리지 않습니다 (`.gitignore`). 필요하면 `npm run render`
+로 다시 뽑으세요.
 
 렌더러 옵션: `--size=1280x720`, `--samples=6`, `--formats=mp4,gif`, `--keep`(PNG 시퀀스 보존),
 `--probe=0,0.5,1.5`.

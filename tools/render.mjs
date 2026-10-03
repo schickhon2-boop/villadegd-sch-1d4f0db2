@@ -127,7 +127,9 @@ async function main() {
   });
 
   const t0 = Date.now();
-  await page.goto(`http://127.0.0.1:${port}/sting.html?export=1`, { waitUntil: 'load' });
+  await page.goto(`http://127.0.0.1:${port}/sting.html?export=1&w=${W}&h=${H}`, {
+    waitUntil: 'load',
+  });
   await page.waitForFunction('window.STING && window.STING.ready', null, { timeout: 180000 });
   await page.evaluate(() => window.STING.ready);
   const meta = await page.evaluate(() => ({

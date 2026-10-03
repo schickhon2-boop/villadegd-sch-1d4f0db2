@@ -134,8 +134,9 @@ let renderH = CONFIG.height;
 
 function resize() {
   if (EXPORT) {
-    renderW = CONFIG.width;
-    renderH = CONFIG.height;
+    // The exporter may ask for a different master size than the config default.
+    renderW = Number(params.get('w')) || CONFIG.width;
+    renderH = Number(params.get('h')) || CONFIG.height;
     canvas.style.width = `${renderW}px`;
     canvas.style.height = `${renderH}px`;
     renderer.setPixelRatio(1);
