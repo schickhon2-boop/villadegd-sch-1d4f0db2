@@ -95,6 +95,7 @@ src/badge.js        동전 지오메트리, 금속 머티리얼, 광택 스윕 �
 src/fx.js           배경, 글로우, 먼지, 모션 블러 누산 + 그레이딩
 tools/render.mjs    헤드리스 렌더 → PNG 시퀀스 → 인코딩
 tools/serve.mjs     로컬 정적 서버
+tools/setup-media.sh 클라우드 세션용 미디어 도구 재설치 (ffmpeg·yt-dlp·auto-editor·rembg)
 artifact/index.html 공유용 페이지 (Claude Artifact 배포본)
 vendor/             Three.js r186 (MIT)
 assets/fonts/       Cinzel (OFL)
